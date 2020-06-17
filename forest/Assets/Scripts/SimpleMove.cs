@@ -39,22 +39,20 @@ public class SimpleMove : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.position) < 50f)
         {
-            if (anim.GetBool("Walk"))
-            {
+            
                 anim.SetBool("Walk", false);
                 anim.SetBool("Run", true);
-            }
-            
-            var forward = transform.TransformDirection((player.position - transform.position).normalized);
+
+            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
+            var forward = transform.TransformDirection((-player.position + transform.position).normalized);
             controller.SimpleMove(forward * speed*2);
         }
         else
         {
-            if (!anim.GetBool("Walk"))
-            {
+            
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
-            }
+            
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
             
             var forward = transform.TransformDirection(Vector3.forward);
