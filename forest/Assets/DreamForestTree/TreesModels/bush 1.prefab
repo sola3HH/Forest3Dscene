@@ -109,18 +109,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpSpecMap:
-        m_Texture: {fileID: 2800000, guid: c7a8a1a5c6b940444901716129dc4e1e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7f613fe5f693f44c8a0917dc4787d03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 370a0ab725f384143aaab0a517506ffd, type: 3}
+        m_Texture: {fileID: 2800000, guid: d3b0e003bad7f844bb42c56de9c13370, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMap:
-        m_Texture: {fileID: 2800000, guid: cefe572908d310642a2bc469bc4799c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 325b1d0623db01344bea0d91ba9bd0c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Cutoff: 0.3
     - _SquashAmount: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,19 +148,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpSpecMap:
-        m_Texture: {fileID: 2800000, guid: c7a8a1a5c6b940444901716129dc4e1e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7f613fe5f693f44c8a0917dc4787d03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 370a0ab725f384143aaab0a517506ffd, type: 3}
+        m_Texture: {fileID: 2800000, guid: d3b0e003bad7f844bb42c56de9c13370, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowTex:
-        m_Texture: {fileID: 2800000, guid: 0f439eb8a359021478358a33eecbbcd8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2f19b414c4cf23644907f1a244320a99, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMap:
-        m_Texture: {fileID: 2800000, guid: cefe572908d310642a2bc469bc4799c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 325b1d0623db01344bea0d91ba9bd0c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
