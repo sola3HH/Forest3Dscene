@@ -29,7 +29,8 @@ public class SimpleMove : MonoBehaviour
         heading = Random.Range(0, 360);
         transform.eulerAngles = new Vector3(0, heading, 0);
 
-        StartCoroutine(NewHeading());
+        //Change target rotation to a random angle.
+        NewHeadingRoutine();
 
 
 
@@ -37,28 +38,34 @@ public class SimpleMove : MonoBehaviour
 
     void Update()
     {
+        //If the eular angle reach the target angle, then we should start for a new target angle.
+
         if (Vector3.Distance(transform.position, player.position) < 50f)
         {
             
-                anim.SetBool("Walk", false);
-                anim.SetBool("Run", true);
-
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
-            var forward = transform.TransformDirection((-player.position + transform.position).normalized);
-            controller.SimpleMove(forward * speed*2);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", true);
+            //targetRotation = Quaternion.LookRotation(player.position - transform.position);
+            //targetRotation = new Vector3(0, Quaternion.LookRotation(player.position-transform.position).eulerAngles.y, 0);
+            //targetRotation =new Vector3( 0, Mathf.Atan((-player.position + transform.position).z/ (-player.position + transform.position).x), 0);
+            //transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime);
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,  Time.deltaTime/15);
+            transform.LookAt(player);
         }
         else
         {
             
-                anim.SetBool("Walk", true);
-                anim.SetBool("Run", false);
+
+            anim.SetBool("Walk", true);
+            anim.SetBool("Run", false);
+            //transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation ( targetRotation),  Time.deltaTime);
             
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
-            
-            var forward = transform.TransformDirection(Vector3.forward);
-            controller.SimpleMove(forward * speed);
+
         }
-        
+        var forward = transform.TransformDirection(Vector3.forward);
+        controller.SimpleMove(forward * speed * 2);
+        Debug.Log(targetRotation);
     }
 
     /// <summary>
@@ -82,7 +89,8 @@ public class SimpleMove : MonoBehaviour
         var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
         var ceil = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
         heading = Random.Range(floor, ceil);
-        targetRotation = new Vector3(0, heading, 0);
+       
+        targetRotation =new Vector3(0,heading,0); 
     }
 }
 
